@@ -229,7 +229,7 @@ def ai_turn(c_choice, h_choice):
     set_move(x, y, COMP)
     comp_history.append([x, y])
     time.sleep(1)
-    return moves.get(f"{x}{y}")
+    return moves[str(x)+str(y)]
 
 def human_turn(c_choice, h_choice):
     """
