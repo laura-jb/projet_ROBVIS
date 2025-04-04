@@ -25,7 +25,7 @@ Bonne chance!
  - Dans le dossier tictactoe ouvir le code Python *V1_server_tictactoe.py* et remplacer son contenue par le code précédemment copié
  - Dans le bureau, lancer le programme *LancementJeuTicTacToe _ Copie.BAT*
  - Dans *robotstudio*, Set les pointeurs puis appuyer sur start
- - La partie va démarrer après un check avec le robot 
+ - La partie va démarrer après un check (tapoter le bout du robot) avec le robot 
 
 ### Liste des fichiers 
 
