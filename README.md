@@ -31,8 +31,8 @@ Bonne chance!
 
 - *V1_server_tictactoe.py* : le code python original à utiliser avec le robot pour jouer au morpion simple
 - *Version_morpion_3_pieces.py* : le code modifié pour jouer au morpion à 3 pièces
-- *version_py_jeu_original.py* : Un code python qui reprend la version pour robot mais l'adapte pour pouvoir réaliser une partie de morpion directement sur un terminal python avec l'IA du robot
-- *version_py_jeu_3_pieces_v3.py* : Le code python pour jouer sur le terminal adapté au jeu de morpion à trois pièces
+- *version_py_jeu_original.py* : un code python qui reprend la version pour robot mais l'adapte pour pouvoir réaliser une partie de morpion directement sur un terminal python avec l'IA du robot
+- *version_py_jeu_3_pieces_v3.py* : le code python pour jouer sur le terminal adapté au jeu de morpion à trois pièces
 
 ### Nos modifications
 - Dans le code Python qui permet de choisir le prochain coup (voir les commentaires dans le fichier *version_py_jeu_3_pieces_v3.py* 
