@@ -3,10 +3,15 @@
 # Pour le code python, nous avons conserver la structure et les fonctions du code original.
 # Nous avons initialisé de nouvelles variables pour mémoriser les coups.
 # Fonctions modifiées : 
-# - minimax : nous avons ajouté une variable move_to_change à l'appel de la fonction qui indique la pièce à déplacer si plus de trois coups ont été joués.
-# - ai_turn : nous avons ajouté une variable popped_cell pour indiquer la pièce à déplacer si plus de trois coups ont été joués. De plus, nous enregistrons chaque coup de l'IA dans une liste comp_history.
+# - minimax : nous avons ajouté une variable move_to_change à l'appel de la fonction qui indique la pièce à déplacer 
+#             si plus de trois coups ont été joués.
+# - ai_turn : nous avons ajouté une variable popped_cell pour indiquer la pièce à déplacer si plus de trois coups ont été joués. 
+#             De plus, nous enregistrons chaque coup de l'IA dans une liste comp_history.
 # - human_turn : nous l'avons modifiée de manière similaire à ai_turn
-# - is_new : Nous l'avons adapté pour qu'elle considère qu'un coups à été joué dès que des pions changent d'emplacement.
+# - is_new : Nous l'avons adapté pour qu'elle considère qu'un coups à été joué dès que des pions changent d'emplacement. 
+#            Elle prend maintenant en paramètre une copie du plateau avant le nouveau coup humain pour le comparer et 
+#            ne valider le coup humain que lorsqu'une pièce à bien été ajoutée si il y a moins de trois coup joués 
+#            ou bien lorsque l'humain à bien déplacer une de ses pièces
 # - compteur_moins_1() : qui lit le plateau et renvoit le nombre de pions posés par le joueur humain.
 '''
 	Simple socket server using threads
