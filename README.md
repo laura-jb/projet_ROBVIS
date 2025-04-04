@@ -4,7 +4,7 @@
 L'objectif du projet est de développer de nouveaux programmes et stratégies de jeu du morpion avec le robot ABB YUMI.
 Ce robot était déjà programmé pour jouer à une partie de morpion classique avec un humain ainsi que ranger les pièces une fois la partie terminée.
 
-Nous avons décidé de programmer le robot pour jouer à une partie de morpions à 3 pièces seulement. C'est-à-dire, que les 3 premiers tours du joueur humain et du robot sont réalisés normalement, puis pour les tours suivant, les joueurs déplacent la plus ancienne pièce qu'ils ont posé au lieu d'en prendre une quatrième. Cela complexifie vraiment le jeu et permet à l'humain d'avoir une chance contre l'ordinateur.
+Nous avons décidé de programmer le robot pour jouer à une partie de morpions à 3 pièces seulement. C'est-à-dire, que les 3 premiers tours du joueur humain et du robot sont réalisés normalement, puis pour les tours suivant, les joueurs déplacent la plus ancienne pièce qu'ils ont posé au lieu d'en prendre une quatrième. Cela complexifie vraiment le jeu et permet à l'humain d'avoir une chance contre l'ordinateur. Il continue de ranger les pièces après la partie.
 
 
 ### Règle du jeu :
