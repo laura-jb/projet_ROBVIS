@@ -21,7 +21,7 @@ Bonne chance!
  - Ajouter le controlleur le plus récent
  - Charger la backup datant du 24 Mars 2025
  - Aller chercher dans le dossier *Projet LauAntBen*, le fichier *MainModule.mod*, l'ouvrir , et copier l'intégralité du contenu dans le *MainModule.mod* du bras droit du robot (Une copie de la version de base du *MainModule.mod* existe déjà dans le même dossier dans l'idée de remettre le programme de base)
- - Dans le dossier *LauAntBen* ouvrir le code python *Version_morpion_3_pieces.py* et le copier
+ - Dans le dossier *LauAntBen* ouvrir le code python *Version_pour_robot_3_pieces_final.py* et le copier
  - Dans le dossier tictactoe ouvir le code Python *V1_server_tictactoe.py* et remplacer son contenue par le code précédemment copié
  - Dans le bureau, lancer le programme *LancementJeuTicTacToe _ Copie.BAT*
  - Dans *robotstudio*, Set les pointeurs puis appuyer sur start
