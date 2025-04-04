@@ -36,5 +36,6 @@ Bonne chance!
 
 ### Nos modifications
 - Dans le code Python qui permet de choisir le prochain coup (voir les commentaires dans le fichier *version_py_jeu_3_pieces_v3.py* 
-- Dans le code qui permet de lancer le robot *MainModule.mod* dans la fonction Game(). Nous avons modifié la structure du jeu pour que les trois premier coups viennent de la reserve de pions et que les coups suivants soit pris depuis le plateau, en récuperant la bonne pièce. Les modules de visons et de mouvements restent inchangés  
+- Dans le code qui permet de lancer le robot *MainModule.mod* dans la fonction Game(). Nous avons modifié la structure du jeu pour que les trois premier coups viennent de la reserve de pions et que les coups suivants soit pris depuis le plateau, en récuperant la bonne pièce.
+Les modules de visons et de mouvements restent inchangés 
  
