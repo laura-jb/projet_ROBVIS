@@ -1,0 +1,79 @@
+#
+# Generated backup file, do not edit.
+#
+# Originally at: /hd0a/TEMP/backup.057182
+# 2022-03-18  21:42:31
+#
+>>SYSTEM_ID:
+14000-502153
+
+>>PRODUCTS_ID:
+RobotWare Version: 6.11.01.00
+SmartGripper Version: 3.56.0000.00
+
+  Contact L
+  Leadthrough
+  UDPUC Driver
+  YuMi AbsAcc Recovery
+  English
+  603-1 Absolute Accuracy
+  988-1 RW Add-In Prepared
+  613-1 Collision Detection
+  709-1 DeviceNet Master/Slave
+  841-1 EtherNet/IP Scanner/Adapter
+  689-1 Externally Guided Motion (EGM)
+  617-1 FlexPendant Interface
+  614-1 FTP SFTP and NFS client
+  1341-1/1520-1 Integrated Vision Interface
+  604-1 MultiMove Coordinated
+  623-1 Multitasking
+  612-1 Path Offset
+  611-1 Path Recovery
+  616-1 PC Interface
+  688-1 RobotStudio App Connect
+  885-1 SoftMove
+  608-1 World Zones
+  RobotWare Base
+  Hall Sensor Calibration
+  Pendelum Calibration
+  Motor Commutation
+  Service Info System
+  Drive System IRB 14000
+  IRB 14000-0.5/0.5
+  IRB 14000-0.5/0.5 Type A
+  IRB 14000-0.5/0.5 Type A
+  SmartGripper
+
+>>HOME:
+All public files and directories
+
+>>SYSPAR:
+SYS.cfg
+PROC.cfg
+MMC.cfg
+EIO.cfg
+SIO.cfg
+MOC.cfg
+
+
+>>TASK1: (T_ROB_R,RightProgram,)
+PROGMOD/Vision.mod @ 
+SYSMOD/user.sys @ 
+SYSMOD/YuMi_TapMove_Base.sys @ 
+PROGMOD/MainModule.mod @ 
+SYSMOD/YuMi_App_R.sys @ 
+SYSMOD/YuMi_TapMove_User.sys @ 
+SYSMOD/YuMi_App_Common.sys @ 
+PROGMOD/Mouvement.mod @ 
+
+>>TASK2: (T_ROB_L,LeftProgram,)
+SYSMOD/YuMi_App_L.sys @ 
+SYSMOD/user.sys @ 
+SYSMOD/YuMi_TapMove_Base.sys @ 
+PROGMOD/MainModule.mod @ 
+SYSMOD/YuMi_TapMove_User.sys @ 
+SYSMOD/YuMi_App_Common.sys @ 
+PROGMOD/Mouvement.mod @ 
+
+
+>>EOF:

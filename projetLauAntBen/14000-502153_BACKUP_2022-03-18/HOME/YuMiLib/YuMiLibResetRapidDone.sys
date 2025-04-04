@@ -1,0 +1,12 @@
+MODULE YuMiLibResetRapidDone(SYSMODULE)
+    !This module is used to check if the system has been Reset (I-started)
+    TASK PERS num nRestartCounter:=0;
+
+    PROC IncrRestartCounter()
+        Incr nRestartCounter;
+    ENDPROC
+    
+    PROC GetRestartCounter(INOUT num nCtr)
+        nCtr:=nRestartCounter;
+    ENDPROC
+ENDMODULE

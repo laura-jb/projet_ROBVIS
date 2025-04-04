@@ -1,0 +1,174 @@
+MODULE YuMi_TapMove_User(SYSMODULE)
+
+    !********************************************************************
+    !
+    ! Copyright (c) ABB Automation GmbH 2016. All rights reserved
+    !
+    !********************************************************************
+    !
+    ! Module:       YuMi_TapMove_User
+    !
+    ! Description:  Example how to activate tap move - requires loaded logging module YuMi_TapMove_Base
+    !
+    ! Version:      0.5
+    !
+    ! History:      Version   Autor               Date        Reason
+    !               -------------------------------------------------
+    !               0.1       Katja Butterweck    2016-01-14  created
+    !               0.2       C. Goy              2016-03-23  modified
+    !               0.3       Katja Butterweck    2016-04-20  suitable for App
+    !               0.4       C. Goy              2016-04-22  no background task, loaded in T_ROB_R or T_ROB_L
+    !               0.5       C. Goy              2016-06-10  selectable motor and speed limit,
+    !                                                         using new RECORD logAxis and TapSpeedLim
+    !
+    !********************************************************************* 
+
+    !**********************************************************
+    !*                   declarations                         *
+    !**********************************************************
+    !Speed limit (rad/s), motor side, of any motor, used if \TapSpeedLimit is not used in WaitforTap
+    CONST num nTapSpeedLimit:=3;
+    !speed limit (rad/s), motor side, separated for all motors, default: Tap_speed_lim:=[3,3,3,3,3,3,3];
+    TASK PERS TapSpeedLim Tap_speed_lim:=[3,3,3,3,3,3,3];
+    
+    !analyze only dedicated axis by using optional argument \LogAxis in WaitTap
+    TASK PERS LogAxis log_ax:=[TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE];
+    !
+    
+    !clock for measuring time between WaitMoves
+    VAR clock clkWaitForTap;
+    !current tool and wobj
+    TASK PERS tooldata tCurrent:=[TRUE,[[-7.3,28.3,35.1],[0.707107,-0.707107,0,0]],[0.244,[7.5,11.8,52.7],[1,0,0,0],0.00021,0.00023,8E-05]];
+    TASK PERS wobjdata wCurrent:=[FALSE,TRUE,"",[[231.471,118.946,9.75126],[0.704787,-0.000962526,0.00262938,-0.709413]],[[0,0,0],[1,0,0,0]]];
+
+
+    !********************************************************************
+    !*  Procedure WaitforTap                                            
+    !*                                                                  
+    !*  Description: Waits for a tap                                    
+    !*  \LogAxis logAx           selects axis that shall be supervised            
+    !*  \TapSpeedLim tapSpdLim   separated motor speed limit for each motor
+    !*  both arguments are handed through to TapSpeedOverLimit
+    !*                                                                  
+    !*                                                                  
+    !*  Date:          Version:    Programmer:       Reason:            
+    !*  2016-04-22     1.0         C. Goy            created            
+    !*  2016-06-10     1.1         C. Goy            optional arguments logAx and tapSpdLim
+    !********************************************************************
+
+    PROC WaitforTap(
+        \LogAxis logAx
+        \TapSpeedLim tapSpdLim)
+
+        ! Init   
+
+        !max speed out of all axis
+        nMaxLoggedSpeedROB:=0;
+        !seperated speeds
+        nSpeedLastROB_1:=0;
+        nSpeedLastROB_2:=0;
+        nSpeedLastROB_3:=0;
+        nSpeedLastROB_4:=0;
+        nSpeedLastROB_5:=0;
+        nSpeedLastROB_6:=0;
+        nSpeedLastROB_7:=0;
+        !clock
+        ClkReset clkWaitForTap;
+        ClkStart clkWaitForTap;
+
+        WaitMove 3;
+        
+        WHILE LogRobSpeed(\logAx?logAx,\tapSpdLim?tapSpdLim) =FALSE DO
+                 IF ClkRead(clkWaitForTap)>5 THEN
+                    !waitmove after 5 sec
+                    ClkReset clkWaitForTap;
+                    ClkStart clkWaitForTap;
+                    WaitMove 3;
+                ENDIF
+        ENDWHILE
+     
+        ClkStop clkWaitForTap;
+        AcknowledgeMove 3;
+    ENDPROC
+
+    !********************************************************************
+    !*  Procedure AcknowledgeMove                                       *
+    !*                                                                  *
+    !*  Description: Moves ellbow as acknowledge                        *
+    !*                                                                  *
+    !*  Date:          Version:    Programmer:       Reason:            *
+    !*  2016-04-22     1.0         C. Goy            created            *
+    !********************************************************************
+    PROC AcknowledgeMove(
+        num EllbowMove)
+
+        VAR robtarget pCurrent:=[[0,0,0],[1,0,0,0],[0,0,0,0],[9E9,9E9,9E9,9E9,9E9,9E9]];
+        VAR robtarget pAcknowledge:=[[0,0,0],[1,0,0,0],[0,0,0,0],[9E9,9E9,9E9,9E9,9E9,9E9]];
+        VAR num nTaskID;
+        VAR string stTask;
+        VAR string stCurrentToolName;
+        VAR string stCurrentWobjName;
+
+        !read current posiiton, tool and wobj
+        GetSysData tCurrent\ObjectName:=stCurrentToolName;
+        GetSysData wCurrent\ObjectName:=stCurrentWobjName;
+        pCurrent:=CRobT();
+        pAcknowledge:=pCurrent;
+        ! read task
+        stTask:=GetTaskName(\TaskNo:=nTaskID);
+        IF nTaskID=1 THEN
+            !Rob_R
+            pAcknowledge.extax.eax_a:=pAcknowledge.extax.eax_a+EllbowMove;
+        ELSEIF nTaskID=2 THEN
+            !Rob_L
+            pAcknowledge.extax.eax_a:=pAcknowledge.extax.eax_a-EllbowMove;
+        ENDIF
+        MoveJ pAcknowledge,v100,z1,tCurrent\WObj:=wCurrent;
+        MoveJ pCurrent,v100,fine,tCurrent\WObj:=wCurrent;
+
+        !Set tool and wobj active again instead of tCurrent and wCurrent
+        SetSysData tCurrent\ObjectName:=stCurrentToolName;
+        SetSysData wCurrent\ObjectName:=stCurrentWobjName;
+
+    ERROR
+        IF ERRNO=ERR_OUTSIDE_REACH RETURN ;
+    ENDPROC
+
+    !********************************************************************
+    !*  Procedure WaitMove                                              *
+    !*                                                                  *
+    !*  Description: Moves hand as wait gesture                         *
+    !*                                                                  *
+    !*  Date:          Version:    Programmer:       Reason:            *
+    !*  2016-04-22     1.0         C. Goy            created            *
+    !********************************************************************
+    PROC WaitMove(
+        num Axis5Move)
+
+        VAR jointtarget jpCurrent:=[[0,0,0,0,0,0],[9E9,9E9,9E9,9E9,9E9,9E9]];
+        VAR jointtarget jpWait:=[[0,0,0,0,0,0],[9E9,9E9,9E9,9E9,9E9,9E9]];
+
+        VAR string stCurrentToolName;
+        VAR string stCurrentWobjName;
+
+        !read current posiiton, tool and wobj
+        GetSysData tCurrent\ObjectName:=stCurrentToolName;
+        GetSysData wCurrent\ObjectName:=stCurrentWobjName;
+        jpCurrent:=CJointT();
+        jpWait:=jpCurrent;
+
+        jpWait.robax.rax_5:=jpWait.robax.rax_5-Axis5Move;
+
+        MoveAbsJ jpWait,v100,z1,tCurrent\WObj:=wCurrent;
+        MoveAbsJ jpCurrent,v100,fine,tCurrent\WObj:=wCurrent;
+
+        !Set tool and wobj active again instead of tCurrent and wCurrent
+        SetSysData tCurrent\ObjectName:=stCurrentToolName;
+        SetSysData wCurrent\ObjectName:=stCurrentWobjName;
+
+        WaitTime 0.5;
+    ERROR
+        IF ERRNO=ERR_OUTSIDE_REACH RETURN ;
+    ENDPROC
+
+ENDMODULE
