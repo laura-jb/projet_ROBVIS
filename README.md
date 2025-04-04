@@ -15,7 +15,7 @@ Nous avons décidé de programmer le robot pour jouer à une partie de morpions 
  - Aller chercher dans le dossier Projet LauAntBen, le fichier MainModule.mod, l'ouvrir , et copier l'intégralité du contenue dans le MainModule.mod du bras droit du robot (Une copie de la version de base du MainModule.mod existe déjà dans le même dossier dans l'idée de remettre le programme de base)
  - Dans le dossier LauAntBen ouvrir le code python Version_morpion_3_pieces.py et copier le
  - Dans le dossier tictactoe ouvir le code Python V1_server_tictactoe.py et remplacer son contenue par le code précédemment copié
- - Dans le bureau, lancer le programme - -
+ - Dans le bureau, lancer le programme LancementJeuTicTacToe _ Copie.BAT
  - Dans robotstudio, Set les pointeurs puis appuyer sur start
  - La partie va démarrer après un check avec le robot 
 
