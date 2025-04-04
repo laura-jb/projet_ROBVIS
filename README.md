@@ -1,13 +1,12 @@
 # projet_ROBVIS
-Projet UV ROBVIS : amélioration de jeu, robot ABB YUMI
+### Projet UV ROBVIS : amélioration de jeu sur le robot ABB YUMI
 
 L'objectif du projet est de développer de nouveaux programmes et stratégies de jeu du morpion avec le robot ABB YUMI.
-
 Ce robot était déjà programmé pour jouer à une partie de morpion classique avec un humain ainsi que ranger les pièces une fois la partie terminée.
 
 Nous avons décidé de programmer le robot pour jouer à une partie de morpions à 3 pièces seulement. C'est-à-dire, que les 3 premiers tours du joueur humain et du robot sont réalisés normalement, puis pour les tours suivant, les joueurs déplacent la plus ancienne pièce qu'ils ont posé au lieu d'en prendre une quatrième.
 
-Instruction d'installation : 
+### Instruction d'installation : 
 
  - Utiliser l'ordinateur prévu à l'emplacement du robot ABB YUMI
  - Lancer RobotStudio 2021
@@ -19,5 +18,7 @@ Instruction d'installation :
  - Dans le bureau, lancer le programme - -
  - Dans robotstudio, Set les pointeurs puis appuyer sur start
  - La partie va démarrer après un check avec le robot 
+
+### Liste des fichiers 
 
 
