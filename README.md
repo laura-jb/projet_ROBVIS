@@ -1,5 +1,5 @@
 # projet_ROBVIS
-### Projet UV ROBVIS : amélioration de jeu sur le robot ABB YUMI
+### Projet UV ROBVIS : amélioration du jeu du morpion sur le robot ABB YUMI
 
 L'objectif du projet est de développer de nouveaux programmes et stratégies de jeu du morpion avec le robot ABB YUMI.
 Ce robot était déjà programmé pour jouer à une partie de morpion classique avec un humain ainsi que ranger les pièces une fois la partie terminée.
