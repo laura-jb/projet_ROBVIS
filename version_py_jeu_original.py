@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # credits: http://www.binarytides.com/python-socket-server-code-example/
-
+# Ce code reprend une partie des fonctions du code python pour le robot mais adapte les affichages et commandes pour jouer avec un humain directement sur le terminal
 '''
 	Simple socket server using threads
 '''
