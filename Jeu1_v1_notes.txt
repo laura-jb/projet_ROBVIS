@@ -1,2 +1,0 @@
-
-Jeu de morpion avec 3 pièces. Au bout de trois pièces posées, la plus ancienne doit être déplacée à chaque coup.
